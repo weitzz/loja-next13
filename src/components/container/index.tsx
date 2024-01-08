@@ -3,7 +3,9 @@ interface IContainer {
 }
 
 const Container = ({ children }: IContainer) => {
-  return <section className="max-w-screen-xl mx-auto px-3">{children}</section>;
+  return (
+    <section className="w-full max-w-7xl mx-auto px-2 ">{children}</section>
+  );
 };
 
 export default Container;

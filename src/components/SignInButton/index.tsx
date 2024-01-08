@@ -24,11 +24,18 @@ const SignInButton = () => {
           ) : (
             <FiUser size={25} />
           )}
-          <Button onClick={() => signOut({ callbackUrl: "/" })}>Sair</Button>
+          <Button
+            onClick={() => signOut({ callbackUrl: "/" })}
+            className="text-md"
+          >
+            Sair
+          </Button>
         </div>
       ) : (
         <div className="hidden sm:flex justify-center items-center gap-2">
-          <Button onClick={() => signIn("google")}>Entrar</Button>
+          <Button onClick={() => signIn("google")} className="text-md">
+            Entrar
+          </Button>
         </div>
       )}
     </>
