@@ -1,7 +1,8 @@
 import Header from "@/components/Header/Header";
+import Container from "@/components/container";
 import React from "react";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const Produtolayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Header />
@@ -10,4 +11,4 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default layout;
+export default Produtolayout;

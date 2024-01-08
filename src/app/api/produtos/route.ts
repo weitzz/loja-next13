@@ -24,3 +24,28 @@ export async function POST(request: Request) {
     
   
 }
+
+
+export async function GET(request: Request){
+  const { searchParams } = new URL(request.url)
+  const nameProduct = searchParams.get("name")
+
+  if(!nameProduct || nameProduct === ""){
+    return NextResponse.json({ error: "Produto não encontrado" }, { status: 400 })
+  }
+
+  try{
+    const product = await prisma.product.findFirst({
+      where:{
+        name: nameProduct 
+      }
+    })
+
+    return NextResponse.json(product)
+
+  }catch(err){
+    return NextResponse.json({ error: "Produto não encontrado" }, { status: 400 })
+  }
+
+
+}
