@@ -1,8 +1,8 @@
 export interface IProduct {
-    id?: string,
+    id?: string | number,
     name: string,
-    price: string,
+    price: number ,
     description: string,
-    created_at?: Date
+    created_at: Date | null | undefined;
     
 }

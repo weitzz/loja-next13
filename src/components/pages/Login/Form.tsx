@@ -1,6 +1,5 @@
 "use client";
 
-import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { signIn } from "next-auth/react";
@@ -10,7 +9,7 @@ import { FcGoogle } from "react-icons/fc";
 
 export function Login() {
   return (
-    <Container>
+    <>
       <form
         id="loginform"
         className="flex flex-col gap-2 mx-auto max-w-lg mt-10"
@@ -40,6 +39,6 @@ export function Login() {
           </Link>
         </p>
       </div>
-    </Container>
+    </>
   );
 }

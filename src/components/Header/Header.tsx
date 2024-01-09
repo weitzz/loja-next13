@@ -1,14 +1,15 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { FaCartShopping } from "react-icons/fa6";
 
-import SignInButton from "../SignInButton";
-import { Button } from "../ui/button";
+import { RiMenuFill } from "react-icons/ri";
+import { SignInButton } from "../SignInButton";
+
+import CartDrawer from "../Cart/Cart";
+import { InputSearch } from "../InputSearch/InputSearch";
 
 const Header = () => {
   const [active, setActive] = useState(false);
-
   const onClick = () => {
     setActive(!active);
   };
@@ -20,11 +21,13 @@ const Header = () => {
             M Store
           </Link>
 
+          <InputSearch />
+
           <div
             onClick={onClick}
             className="md:hidden uppercase cursor-pointer font-semibold "
           >
-            Menu
+            <RiMenuFill />
           </div>
           <nav
             className={`${
@@ -34,10 +37,10 @@ const Header = () => {
           >
             <ul className="md:flex-row md:flex flex-row items-center justify-center gap-4 ">
               <Link href="/produtos/cadastrar">Cadastrar</Link>
-              <Button className="gap-2 text-md">
-                Carrinho <FaCartShopping />
-              </Button>
-              <SignInButton />
+              <CartDrawer />
+              <li className="list-none md:mr-2">
+                <SignInButton />
+              </li>
             </ul>
           </nav>
         </div>

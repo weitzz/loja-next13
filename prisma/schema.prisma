@@ -64,7 +64,12 @@ model VerificationToken {
 model Product {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
   name        String
-  price       String
+  price       Int
   description String
   created_at  DateTime? @default(now())
+}
+
+model SearchQuery {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  query String
 }

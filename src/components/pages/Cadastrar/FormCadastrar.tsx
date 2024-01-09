@@ -24,16 +24,9 @@ import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 
 export function FormCadastrar() {
-  const [mensagem, setMensagem] = useState<string | null>(null);
-
   const router = useRouter();
   const form = useForm<FormProps>({
     resolver: zodResolver(cadastroSchema),
-    defaultValues: {
-      name: "",
-      description: "",
-      price: "",
-    },
   });
 
   type FormProps = z.infer<typeof cadastroSchema>;
@@ -42,11 +35,11 @@ export function FormCadastrar() {
     const response = await api.post("http://localhost:3000/api/produtos", {
       name: data.name,
       description: data.description,
-      price: data.price,
+      price: Number(data.price),
     });
 
     router.refresh();
-    router.replace("/produtos/cadastrar");
+    router.replace("/produtos");
   }
 
   return (
@@ -99,7 +92,6 @@ export function FormCadastrar() {
           </Button>
           <Button type="submit">Cadastrar</Button>
         </CardFooter>
-        <FormMessage>{mensagem}</FormMessage>
       </form>
     </Form>
   );
