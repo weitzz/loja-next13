@@ -1,18 +1,7 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useReducer,
-  useState,
-} from "react";
-import { cartReducer } from "@/reducers/reducer";
-import {
-  addToCartAction,
-  removeAllItemsFromCartAction,
-  removeFromCartAction,
-  removeQuantityAction,
-} from "@/reducers/actions";
+import { createContext, ReactNode, useContext } from "react";
+
 import { IProduct } from "@/@types/products";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 interface ICartProviderProps {
   children: ReactNode;
@@ -36,42 +25,102 @@ interface ICartContextProps {
 export const CartContext = createContext({} as ICartContextProps);
 
 function CartProvider({ children }: ICartProviderProps) {
-  const storedCartState = localStorage.getItem("cartState");
-  const initialCartState = storedCartState
-    ? JSON.parse(storedCartState)
-    : { products: [], quantityInCart: 0, priceInCart: 0, typePayment: "" };
+  const [cartState, setCartState] = useLocalStorage("cartState", {
+    products: [],
+    quantityInCart: 0,
+    priceInCart: 0,
+  });
 
-  const [cartState, dispatch] = useReducer(cartReducer, initialCartState);
   const { products, quantityInCart, priceInCart } = cartState;
-
-  console.log("products", products);
-  console.log("quantityInCart", quantityInCart);
-  console.log("priceInCart", priceInCart);
-
-  function updateLocalStorage() {
-    const cartState = { products, quantityInCart, priceInCart };
-    localStorage.setItem("cartState", JSON.stringify(cartState));
-  }
 
   const contextValue: ICartContextProps = {
     products,
     quantityInCart,
     priceInCart,
     addToCart: (product) => {
-      dispatch(addToCartAction(product));
-      updateLocalStorage();
+      setCartState((prevState) => {
+        if (prevState.products.length === 0) {
+          return {
+            ...prevState,
+            products: [{ ...product, quantity: 1 }],
+            quantityInCart: 1,
+            priceInCart: product.price,
+          };
+        }
+        const productExists = prevState.products.find(
+          (item: IProductCart) => item.id === product.id
+        );
+        if (productExists) {
+          const newProducts = prevState.products.map((item: IProductCart) => {
+            if (item.id === product.id) {
+              return { ...item, quantity: item.quantity + 1 };
+            }
+            return item;
+          });
+          return {
+            ...prevState,
+            products: newProducts,
+            quantityInCart: prevState.quantityInCart + 1,
+            priceInCart: prevState.priceInCart + product.price,
+          };
+        }
+        return {
+          ...prevState,
+          products: [...prevState.products, { ...product, quantity: 1 }],
+          quantityInCart: prevState.quantityInCart + 1,
+          priceInCart: prevState.priceInCart + product.price,
+        };
+      });
     },
     removeQuantity: (product) => {
-      dispatch(removeQuantityAction(product));
-      updateLocalStorage();
+      setCartState((prevState) => {
+        const productExists = prevState.products.find(
+          (item: IProductCart) => item.id === product.id
+        );
+        if (productExists) {
+          const newProducts = prevState.products.map((item: IProductCart) => {
+            if (item.id === product.id) {
+              return { ...item, quantity: item.quantity - 1 };
+            }
+            return item;
+          });
+          return {
+            ...prevState,
+            products: newProducts,
+            quantityInCart: prevState.quantityInCart - 1,
+            priceInCart: prevState.priceInCart - product.price,
+          };
+        }
+      });
     },
     removeFromCart: (product) => {
-      dispatch(removeFromCartAction(product));
-      updateLocalStorage();
+      setCartState((prevState) => {
+        const productExists = prevState.products.find(
+          (item: IProductCart) => item.id === product.id
+        );
+        if (productExists) {
+          const newProducts = prevState.products.filter(
+            (item: IProductCart) => item.id !== product.id
+          );
+          return {
+            ...prevState,
+            products: newProducts,
+            quantityInCart: prevState.quantityInCart - productExists.quantity,
+            priceInCart:
+              prevState.priceInCart - product.price * productExists.quantity,
+          };
+        }
+      });
     },
     removeAllItemsFromCart: () => {
-      dispatch(removeAllItemsFromCartAction());
-      updateLocalStorage();
+      setCartState((prevState) => {
+        return {
+          ...prevState,
+          products: [],
+          quantityInCart: 0,
+          priceInCart: 0,
+        };
+      });
     },
   };
 

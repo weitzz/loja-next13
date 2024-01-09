@@ -47,7 +47,8 @@ const CartDrawer = () => {
         </DrawerHeader>
 
         <CardProduto produtos={products} />
-        <h3>Valor total:{priceInCart}</h3>
+        <DrawerTitle>Valor total: R$ {priceInCart.toFixed(3)}</DrawerTitle>
+
         <DrawerFooter>
           <Button>Finalizar compra</Button>
           <DrawerClose>
