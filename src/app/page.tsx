@@ -1,4 +1,4 @@
-import { Login } from "@/components/pages/Login";
+import { CardForm } from "@/components/pages/Login";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -8,5 +8,5 @@ export default async function Home() {
   if (session) {
     redirect("/produtos");
   }
-  return <Login />;
+  return <CardForm />;
 }

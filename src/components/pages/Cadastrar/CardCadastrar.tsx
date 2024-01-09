@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { FormCadastrar } from "./FormCadastrar";
-import Container from "@/components/container";
 
 const CardCadastrar = () => {
   return (

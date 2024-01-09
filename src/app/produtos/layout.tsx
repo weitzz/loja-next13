@@ -6,7 +6,9 @@ const Produtolayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Header />
-      {children}
+      <main className="flex items-center flex-col justify-center min-h-[calc(100vh-80px)]">
+        {children}
+      </main>
     </>
   );
 };

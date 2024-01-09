@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FiUser } from "react-icons/fi";
 import { Button } from "../ui/button";
 
-const SignInButton = () => {
+export const SignInButton = () => {
   const { data: session } = useSession();
   return (
     <>
@@ -41,5 +41,3 @@ const SignInButton = () => {
     </>
   );
 };
-
-export default SignInButton;
