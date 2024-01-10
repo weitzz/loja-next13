@@ -20,7 +20,7 @@ export const InputSearch = () => {
   }, 300);
 
   return (
-    <div className="relative md:w-1/2   text-gray-600">
+    <div className="relative md:w-1/2 lg:w-100 text-gray-600 flex">
       <Input
         type="search"
         className="w-full pl-10 pr-4 py-2 focus:outline-none focus:shadow-outline text-gray-600 "

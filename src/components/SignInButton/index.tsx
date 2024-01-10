@@ -10,13 +10,13 @@ export const SignInButton = () => {
   return (
     <>
       {session ? (
-        <div className="hidden sm:flex justify-center items-center gap-2">
+        <div className="sm:flex justify-center items-center gap-2 text-sm sm:flex-row">
           <span>Olá, {session?.user?.name || session?.user?.email}</span>
           {session.user?.image ? (
             <Image
               src={session?.user?.image}
-              width={40}
-              height={40}
+              width={25}
+              height={25}
               quality={100}
               className="rounded-full"
               alt="foto de perfil ou logotipo"
@@ -26,7 +26,8 @@ export const SignInButton = () => {
           )}
           <Button
             onClick={() => signOut({ callbackUrl: "/" })}
-            className="text-md"
+            className="text-md text-slate-900"
+            variant="outline"
           >
             Sair
           </Button>
@@ -41,3 +42,4 @@ export const SignInButton = () => {
     </>
   );
 };
+export default SignInButton;

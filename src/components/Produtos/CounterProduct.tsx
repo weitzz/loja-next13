@@ -25,7 +25,7 @@ export function CounterProduct({ product, isChekcout }: ICounterProductProps) {
   const quantity =
     productExists && productExists.quantity ? productExists.quantity : 0;
 
-  const isDisabledToRemove = !!(quantity === 0);
+  const isDisabledToRemove = quantity === 0;
 
   return (
     <div className="flex  items-center p-2 h-9 ">
