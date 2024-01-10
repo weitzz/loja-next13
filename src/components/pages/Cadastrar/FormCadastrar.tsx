@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -18,14 +17,13 @@ import { Input } from "@/components/ui/input";
 import { cadastroSchema } from "@/validations/schemaCadastrar";
 import { CardFooter } from "@/components/ui/card";
 import { api } from "@/lib/api";
-
 import { useRouter } from "next/navigation";
-
 import Link from "next/link";
 import { toast } from "react-toastify";
 
 export function FormCadastrar() {
   const router = useRouter();
+
   const form = useForm<FormProps>({
     resolver: zodResolver(cadastroSchema),
   });
@@ -33,17 +31,19 @@ export function FormCadastrar() {
   type FormProps = z.infer<typeof cadastroSchema>;
 
   async function onSubmit(data: FormProps) {
-    const response = await api.post("/api/produtos", {
-      name: data.name,
-      description: data.description,
-      price: Number(data.price),
-    });
-    if (response.status === 200) {
-      toast.success("Cadastrado com sucesso.");
-      form.reset();
-      router.refresh();
-      router.replace("/produtos");
-    } else {
+    try {
+      const response = await api.post("/api/produtos", {
+        name: data.name,
+        description: data.description,
+        price: Number(data.price),
+      });
+      if (response.status === 200) {
+        toast.success("Cadastrado com sucesso.");
+        form.reset();
+        router.refresh();
+        router.replace("/produtos");
+      }
+    } catch (error) {
       toast.error("Erro ao cadastrar.");
     }
   }
