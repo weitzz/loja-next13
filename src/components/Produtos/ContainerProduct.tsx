@@ -13,6 +13,7 @@ import {
 import { CiShop } from "react-icons/ci";
 
 import { CounterProduct } from "@/components/Produtos/CounterProduct";
+import { formatPrice } from "@/utils/formatPrice";
 
 interface ContainerProductProps {
   produtos: any;
@@ -30,7 +31,7 @@ export function ContainerProduct({ produtos }: ContainerProductProps) {
           <CardContent className="flex items-center flex-col">
             <CiShop size={80} />
             <span className="text-red-600 font-semibold">
-              R$ {produto.price.toFixed(3)}
+              {formatPrice(produto.price)}
             </span>
           </CardContent>
           <CardFooter className="flex  justify-center">

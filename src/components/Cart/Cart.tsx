@@ -12,8 +12,8 @@ import {
 import { Button } from "../ui/button";
 import { useCart } from "@/context/CartContext";
 import { FaCartShopping } from "react-icons/fa6";
-import { ContainerProduct } from "@/components/Produtos/ContainerProduct";
 import { CheckoutProducts } from "../Produtos";
+import { formatPrice } from "@/utils/formatPrice";
 interface ModalProps {
   show: boolean;
   setShow: () => void;
@@ -48,9 +48,7 @@ const CartDrawer = () => {
         <CheckoutProducts produtos={products} />
 
         <DrawerTitle className="p-8">
-          {priceInCart === 0
-            ? ""
-            : `Valor total: R$ ${priceInCart.toFixed(3)} `}
+          {priceInCart === 0 ? "" : `Valor total: ${formatPrice(priceInCart)} `}
         </DrawerTitle>
 
         <DrawerFooter>

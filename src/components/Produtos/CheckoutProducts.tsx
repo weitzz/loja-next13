@@ -9,20 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Table, TableCell, TableRow } from "@/components/ui/table";
 
 import { CiShop } from "react-icons/ci";
 
 import { CounterProduct } from "@/components/Produtos/CounterProduct";
-
+import { formatPrice } from "@/utils/formatPrice";
 interface ContainerProductProps {
   produtos: any;
 }
@@ -42,7 +34,7 @@ export function CheckoutProducts({ produtos }: ContainerProductProps) {
           <TableCell>{produto.description}</TableCell>
 
           <TableCell className="text-right text-red-600 font-semibold">
-            R$ {produto.price.toFixed(3)}
+            {formatPrice(produto.price)}
           </TableCell>
           <TableCell>
             <CounterProduct product={produto} isChekcout={true} />
