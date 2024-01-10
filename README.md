@@ -4,9 +4,17 @@
 
 > OBS: pode-se utilizar o gerenciador de pacotes npm ou o yarn para rodar os comandos abaixo
 
-Execute `npm install` na pasta raiz para instalar as dependências.
+Execute na pasta raiz para instalar as dependências
+```bash
+  npm install
+```
 
-Rode `npm start` na pasta raiz. Acesse via **localhost:3000**.
+
+Rode  na pasta raiz. Acesse via **localhost:3000**.
+```bash
+  npm start
+```
+
 
 Crie um `.env` adicione as URL's
 
