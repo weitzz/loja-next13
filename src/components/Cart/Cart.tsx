@@ -12,9 +12,8 @@ import {
 import { Button } from "../ui/button";
 import { useCart } from "@/context/CartContext";
 import { FaCartShopping } from "react-icons/fa6";
-
-import { CardProduto } from "../pages/Produtos/CardProduto";
-
+import { ContainerProduct } from "@/components/Produtos/ContainerProduct";
+import { CheckoutProducts } from "../Produtos";
 interface ModalProps {
   show: boolean;
   setShow: () => void;
@@ -23,7 +22,7 @@ interface ModalProps {
 const CartDrawer = () => {
   const [open, setOpen] = useState(false);
   const { products, quantityInCart, priceInCart } = useCart();
-  console.log(products);
+
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger className="relative">
@@ -46,8 +45,13 @@ const CartDrawer = () => {
           )}
         </DrawerHeader>
 
-        <CardProduto produtos={products} />
-        <DrawerTitle>Valor total: R$ {priceInCart.toFixed(3)}</DrawerTitle>
+        <CheckoutProducts produtos={products} />
+
+        <DrawerTitle className="p-8">
+          {priceInCart === 0
+            ? ""
+            : `Valor total: R$ ${priceInCart.toFixed(3)} `}
+        </DrawerTitle>
 
         <DrawerFooter>
           <Button>Finalizar compra</Button>

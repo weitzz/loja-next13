@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { FormCadastrar } from "./FormCadastrar";
 
-const CardCadastrar = () => {
+const ContainerCadastrar = () => {
   return (
     <Card className="w-[650px]">
       <CardHeader>
@@ -22,4 +22,4 @@ const CardCadastrar = () => {
   );
 };
 
-export default CardCadastrar;
+export default ContainerCadastrar;

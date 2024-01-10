@@ -12,15 +12,13 @@ import {
 
 import { CiShop } from "react-icons/ci";
 
-import { ProductCounter } from "@/components/ProductCounter/ProductCounter";
-import { IProduct } from "@/@types/products";
-import Container from "@/components/container";
+import { CounterProduct } from "@/components/Produtos/CounterProduct";
 
-interface CardProdutoProps {
-  produtos: Array<IProduct>;
+interface ContainerProductProps {
+  produtos: any;
 }
 
-export function CardProduto({ produtos }: CardProdutoProps) {
+export function ContainerProduct({ produtos }: ContainerProductProps) {
   return (
     <>
       {produtos.map((produto) => (
@@ -36,7 +34,7 @@ export function CardProduto({ produtos }: CardProdutoProps) {
             </span>
           </CardContent>
           <CardFooter className="flex  justify-center">
-            <ProductCounter product={produto} />
+            <CounterProduct product={produto} isChekcout={false} />
           </CardFooter>
         </Card>
       ))}
