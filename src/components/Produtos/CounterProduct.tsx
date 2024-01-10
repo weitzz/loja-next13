@@ -2,23 +2,28 @@ import { useCart, IProductCart } from "@/context/CartContext";
 import { Button } from "../ui/button";
 import { FaCartShopping } from "react-icons/fa6";
 import { Minus, Plus } from "lucide-react";
+import { BsCartPlusFill, BsCartXFill } from "react-icons/bs";
 
-interface IProductCounterProps {
+interface ICounterProductProps {
   product: any;
+  isChekcout?: boolean | true;
 }
 
-export function ProductCounter({ product }: IProductCounterProps) {
-  const { products, removeQuantity, addToCart, quantityInCart } = useCart();
+export function CounterProduct({ product, isChekcout }: ICounterProductProps) {
+  const {
+    products,
+    removeQuantity,
+    addToCart,
+    quantityInCart,
+    removeFromCart,
+  } = useCart();
 
   const productExists =
     products.length > 0 &&
     products.find((item: IProductCart) => item.id === product.id);
-  console.log(products);
 
   const quantity =
     productExists && productExists.quantity ? productExists.quantity : 0;
-
-  console.log(quantity);
 
   const isDisabledToRemove = !!(quantity === 0);
 
@@ -47,15 +52,27 @@ export function ProductCounter({ product }: IProductCounterProps) {
           <Plus className="h-4 w-4" />
           <span className="sr-only">Adicionar</span>
         </Button>
-        <Button
-          variant="outline"
-          size="icon"
-          className="h-8 w-8 shrink-0 rounded-full"
-          onClick={() => addToCart(product)}
-        >
-          <FaCartShopping className="h-4 w-4" />
-          <span className="sr-only">Adicionar no carrinho</span>
-        </Button>
+
+        {isChekcout ? (
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-8 w-8 shrink-0 rounded-full"
+            onClick={() => removeFromCart(product)}
+          >
+            <BsCartXFill className="h-4 w-4" />
+          </Button>
+        ) : (
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-8 w-8 shrink-0 rounded-full"
+            onClick={() => addToCart(product)}
+          >
+            <BsCartPlusFill className="h-4 w-4" />
+            <span className="sr-only">Adicionar no carrinho</span>
+          </Button>
+        )}
       </div>
     </div>
   );

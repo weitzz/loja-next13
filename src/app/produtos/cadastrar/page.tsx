@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import FormCadastrar from "@/components/pages/Cadastrar/CardCadastrar";
+import ContainerCadastrar from "@/components/pages/Cadastrar/ContainerCadastrar";
 
 const Cadastrar = async () => {
   const session = await getServerSession(authOptions);
@@ -9,7 +9,7 @@ const Cadastrar = async () => {
     redirect("/");
   }
 
-  return <FormCadastrar />;
+  return <ContainerCadastrar />;
 };
 
 export default Cadastrar;
