@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <header className="w-full sticky top-0 left-0 bg-slate-900 z-10">
-      <div className="mx-auto md:flex items-center  justify-around  py-4 md:px-10 px-7 text-slate-50 flex ">
+      <div className="mx-auto md:flex items-center  justify-around  py-5 md:px-10 px-7 text-slate-50 flex ">
         <div className="font-semibold text-md cursor-pointer flex items-center ">
           <Link href="/produtos">M Store</Link>
         </div>
@@ -23,7 +23,7 @@ const Header = () => {
 
         <div
           onClick={() => setOpen(!open)}
-          className="absolute right-8 top-6 cursor-pointer md:hidden "
+          className=" right-8 top-6 cursor-pointer md:hidden "
         >
           {open ? <RiCloseLine size={30} /> : <RiMenuFill size={30} />}
         </div>
