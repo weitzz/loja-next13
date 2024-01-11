@@ -36,8 +36,6 @@ export default function RootLayout({
               pauseOnHover
               theme="colored"
             />
-            <Header />
-
             {children}
           </AppProvider>
         </body>
