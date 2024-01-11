@@ -5,6 +5,8 @@ import { AuthProvider } from "@/providers/auth";
 import { AppProvider } from "@/context";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Header from "@/components/Header/Header";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -34,6 +36,8 @@ export default function RootLayout({
               pauseOnHover
               theme="colored"
             />
+            <Header />
+
             {children}
           </AppProvider>
         </body>

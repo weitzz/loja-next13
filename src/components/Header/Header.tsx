@@ -14,7 +14,7 @@ const Header = () => {
   let [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full fixed top-0 left-0 bg-slate-900 ">
+    <header className="w-full sticky top-0 left-0 bg-slate-900 z-10">
       <div className="mx-auto md:flex items-center  justify-around  py-4 md:px-10 px-7 text-slate-50 flex ">
         <div className="font-semibold text-md cursor-pointer flex items-center ">
           <Link href="/produtos">M Store</Link>

@@ -33,7 +33,9 @@ export function CounterProduct({ product, isChekcout }: ICounterProductProps) {
         <Button
           variant="outline"
           size="icon"
-          className="h-8 w-8 shrink-0 rounded-full"
+          className={`h-8 w-8 shrink-0 rounded-full ${
+            isDisabledToRemove && "z-[-1]"
+          }`}
           disabled={isDisabledToRemove}
           onClick={() => removeQuantity(product)}
         >

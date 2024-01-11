@@ -29,14 +29,12 @@ const Produtos = async ({
 
   return (
     <>
-      <Container>
-        <h2 className="text-slate-900 text-xl font-semibold text-center p-8">
-          {produtos.length === 0
-            ? "Nenhum produto cadastrado"
-            : "Lista de produtos"}
-        </h2>
-      </Container>
-      <section className="grid gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+      <h2 className="text-slate-900 text-xl font-semibold text-center p-8">
+        {produtos.length === 0
+          ? "Nenhum produto cadastrado"
+          : "Lista de produtos"}
+      </h2>
+      <section className="grid gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 ">
         <Suspense key={searchParams.query} fallback={<Spinner />}>
           <ContainerProduct produtos={produtos} />
         </Suspense>
