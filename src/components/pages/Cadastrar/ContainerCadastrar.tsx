@@ -10,15 +10,17 @@ import { FormCadastrar } from "./FormCadastrar";
 
 const ContainerCadastrar = () => {
   return (
-    <Card className="w-[650px]">
-      <CardHeader>
-        <CardTitle>Cadastrar produto</CardTitle>
-      </CardHeader>
+    <div className="flex flex-col">
+      <Card className="md:w-full lg:w-96">
+        <CardHeader>
+          <CardTitle>Cadastrar produto</CardTitle>
+        </CardHeader>
 
-      <CardContent>
-        <FormCadastrar />
-      </CardContent>
-    </Card>
+        <CardContent>
+          <FormCadastrar />
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
