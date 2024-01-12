@@ -20,6 +20,10 @@ Crie um `.env` adicione as URL's
 
 > para criar o NEXTAUTH_SECRET rode em seu terminal openssl rand -base64 32
 
+```bash
+  openssl rand -base64 32
+```
+
 - DATABASE_URL
 - NODE_ENV
 - NEXTAUTH_URL
