@@ -12,7 +12,7 @@ Execute na pasta raiz para instalar as dependências
 
 Rode  na pasta raiz. Acesse via **localhost:3000**.
 ```bash
-  npm start
+  npm run dev
 ```
 
 
