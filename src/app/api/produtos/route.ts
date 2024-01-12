@@ -40,7 +40,8 @@ export async function GET(request: Request){
     const product = await prisma.product.findFirst({
       where:{
         name: nameProduct 
-      }
+      },
+     
     })
     
 
@@ -52,3 +53,5 @@ export async function GET(request: Request){
 
 
 }
+
+

@@ -23,7 +23,7 @@ export const InputSearch = () => {
     <div className="relative md:w-1/3 sm:w-1/4 lg:w-100 text-gray-600 flex">
       <Input
         type="search"
-        className="w-full pl-10 pr-4 py-2 focus:outline-none focus:shadow-outline text-gray-600 "
+        className="w-full pl-10 pr-4 py-2 focus:outline-none focus:shadow-outline text-gray-600"
         placeholder="Pesquisar..."
         defaultValue={searchParams.get("query")?.toString()}
         onChange={(event) => handleSearch(event.target.value)}
