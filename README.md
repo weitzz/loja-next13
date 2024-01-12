@@ -18,7 +18,7 @@ Rode  na pasta raiz. Acesse via **localhost:3000**.
 
 Crie um `.env` adicione as URL's
 
-> para criar o NEXTAUTH_SECRET rode em seu terminal openssl rand -base64 32
+para criar o NEXTAUTH_SECRET rode em seu terminal openssl rand -base64 32
 
 ```bash
   openssl rand -base64 32
