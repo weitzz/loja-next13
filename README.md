@@ -45,7 +45,6 @@ Gerar schemas do prisma
 - Shadcn/ui
 - React-hook-form
 - Zod
-- Tailwind
 - Toastfy
 
  <p align="center">Feito com ❤️ por <strong>Tatiane Weitzel<p>
